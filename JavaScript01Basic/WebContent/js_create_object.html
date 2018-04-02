@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		// 1. 객체 상수로부터 객체 생성(JSON)
+		/*
+			myCar: 객체 상수 (객체를 담은 상수)
+		*/
+		var myCar = {
+				model: "520d",
+				speed: 60,
+				color: "red",
+				brake: function () { this.speed -= 10; },
+				accel: function () { this.speed += 10; }
+		};
+		
+		myCar.color = "yellow";
+		myCar.brake();
+		
+		// 2. 생성자 함수를 이용한 객체 생성
+		function Car(model, speed, color) {
+			this.model = model;
+			this.speed = speed;
+			this.color = color;
+			this.brake = function () {
+				this.speed -= 10;
+			}
+			this.accel = function () {
+				this.speed += 10;
+			}
+		}
+			var myCar01 = new Car("520d", 60, "white");
+			myCar01.color = "yellow";
+			myCar01.brake();
+			
+			var myCar02 = new Car("모닝", 40, "red");
+			myCar01.color = "blue";
+			myCar01.brake();
+	
+			document.write("모델: " + myCar.model + "속도: " + myCar.speed + "색상: " + myCar.color + "<br>");
+			myCar.accel();
+			document.write("모델: " + myCar.model + "속도: " + myCar.speed + "색상: " + myCar.color + "<br>");
+			myCar.brake();
+			document.write("모델: " + myCar.model + "속도: " + myCar.speed + "색상: " + myCar.color + "<br>");
+			
+			// myCar01 객체에 turbo 속성과 showModel 메소드를 추가
+			myCar01.turbo = true;
+			myCar.showModel = function() {
+				alert("모델은 " + this.model + "입니다.")
+			}
+	</script>
+
+</body>
+</html>
