@@ -1,18 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
 </head>
 <body>
+	<h3>회원</h3>
+	<form>
+	<div>이름: <input type='text' id='name' /><br /></div>
+	<div>성별: 
+	<input type='radio' name='gender' value="g1"/>남성
+	<input type='radio' name='gender' value="g2"/>여성<br /></div>
+	<div>휴대폰 번호: <input type='text' id='phone' onkeyup="phonenum()"/><em id="msg"><br /></em></div>
+	<div>이메일: <input type='email' id='email' onkeyup="email()"/><em id="msg1"></em><br /></div>
+	<div>패스워드(6~8글자): <input type='password' id='password' onkeyup="checkpassword()" /><em id="msg2"></em><br /></div>
+	<div>패스워드 검증: <input type='password' id='passwordfirm' onkeyup="matchpassword()"/><em id="msg3"></em><br /></div>
+	<input type='submit' value='제출' />
+	<input type='reset' value='지우기' />
+	</form>
+	
 	<script>
-		var a = [1, 2, 3, 4, 5];
+	
+		function email()
+		{
+			var status = document.getElementById('msg1');
+			var elem = document.getElementById('email');
+			var exp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+			
+			if(elem.value.match(exp))
+				status.innerHTML;
+			else
+				status.innerHTML = "이메일을 다시 입력하세요."
+		}
 		
-		b = a.sort(function (a, b) {return b - a});
-		document.writeln('[' + b + ']' + '<br>');
+		function phonenum(elem)
+		{
+			var status = document.getElementById('msg');
+			var elem = document.getElementById('phone');
+			var exp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+			
+			if (elem.value.match(exp))
+				status.innerHTML;
+			else
+				status.innerHTML = "전화번호를 다시 입력하세요."
+		}
 		
-		c = a.sort(function (a, b) {return a - b});
-		document.writeln('[' + c + ']');
+		
+		function checkpassword()
+		{
+			var min = 6;
+			var max = 8;
+			var status = document.getElementById('msg2');
+			var elem = document.getElementById('password').value;
+			
+			if (elem.length >= min && elem.length <= max)
+				status.innerHTML;
+			else
+				status.innerHTML; = "패스워드를 다시 입력하세요.";
+		}
+		
+		function matchpassword()
+		{
+			var status = document.getElementById('msg3');
+			var elem1 = document.getElementById('password').value;
+			var elem2 = document.getElementById('passwordfirm').value;
+			
+			if (elem1 == elem2)
+				status.innerHTML;
+			else
+				status.innerHTML; = "패스워드가 맞지 않습니다.";
+		}
 	</script>
 </body>
 </html>
