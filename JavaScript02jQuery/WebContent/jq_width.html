@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Insert title here</title>
+	<style>
+		div {
+			width: 70px;
+			height: 50px;
+			float: left;
+			margin: 5px;
+			background: red;
+		}
+		
+		.next { background: blue;}
+	</style>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<script src="js/jquery-3.3.1.js"></script>
+	<script>
+		$(document).ready(function () {
+			var modWidth = 50;
+			$("div").click(function() {
+				$(this).width(modWidth).addClass("next");
+				modWidth -= 8;
+			});
+		});
+	</script>
+</body>
+</html>
